@@ -19,6 +19,7 @@ public class P005_LongestPalindromicSubstring {
 				   m += 2;
 			   }
 		   }
+		   
 		   //Ë«Êý¶Ô³Æ
 		   if( i+1 < s.length() && s.charAt(i)==s.charAt(i+1) ) {
 			   j2 = 1; m2 = 2;
