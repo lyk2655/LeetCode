@@ -16,6 +16,7 @@ public class P008_StringtoInteger_atoi {
         		return Integer.parseInt(str);
         	}
         }
+        //´¦Àí¿Õ°×·û ¡°   10012¡±
         for(int i = 0; i < str.length(); i++) {
         	if(str.charAt(i)!=' ') {
         		str = str.substring(i);
