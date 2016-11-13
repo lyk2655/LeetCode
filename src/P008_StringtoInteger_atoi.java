@@ -16,7 +16,7 @@ public class P008_StringtoInteger_atoi {
         		return Integer.parseInt(str);
         	}
         }
-        //�����հ׷� ��   10012��
+        //处理空白符，例如“     010”
         for(int i = 0; i < str.length(); i++) {
         	if(str.charAt(i)!=' ') {
         		str = str.substring(i);
@@ -24,6 +24,7 @@ public class P008_StringtoInteger_atoi {
         	}
         }
         int flag = 1;
+        //第一个符号确定正负
         if(str.charAt(0) == '-' && str.length() > 1) {
         	flag = -1;
         	str = str.substring(1);
@@ -32,6 +33,7 @@ public class P008_StringtoInteger_atoi {
         	str = str.substring(1);
         }
         int x = 0;
+        //非数字字符截止，判断int溢出
         for(int i = 0; i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <='9'; i++) {
         	if(x > 214748364) {
         		if(flag == 1) {
