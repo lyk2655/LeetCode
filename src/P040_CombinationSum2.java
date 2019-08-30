@@ -7,11 +7,11 @@ public class P040_CombinationSum2 {
         P040_CombinationSum2 cc = new P040_CombinationSum2();
         int[] candidates = {10,1,2,7,6,1,5};
         int target = 8;
-        List<List<Integer>> res = cc.combinationSum(candidates, target);
+        List<List<Integer>> res = cc.combinationSum2(candidates, target);
         System.out.println(res.toString());
     }
 
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
         if(candidates == null) {
             return res;
@@ -31,6 +31,9 @@ public class P040_CombinationSum2 {
             return;
         }
         for(int i = pos; i < candidates.length; i++) {
+            if(i != pos && candidates[i] == candidates[i-1]) {
+                continue;
+            }
             int data = candidates[i];
             if(data > target) {
                 break;
@@ -39,10 +42,6 @@ public class P040_CombinationSum2 {
             int[] candi = Arrays.copyOfRange(candidates, i+1, candidates.length);
             combination(res, list, candi, target-data, 0);
             list.remove(list.size()-1);
-            if(i > 1 && i < candidates.length-1 && candidates[i-1] == candidates[i]) {
-                i++;
-            }
         }
-
     }
 }
