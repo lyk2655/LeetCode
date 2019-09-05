@@ -8,6 +8,27 @@ public class P042_TrappingRainWater {
     }
 
     public int trap(int[] height) {
-        return 0;
+        if(height.length < 2) {
+            return 0;
+        }
+        int[] maxLeftHeight = new int[height.length];
+        int[] maxRightHeight = new int[height.length];
+
+        int maxLeft = 0, maxRight = 0;
+        for(int i = 0; i < height.length; i++) {
+            maxLeft = Math.max(maxLeft, height[i]);
+            maxLeftHeight[i] = maxLeft;
+        }
+        for(int i = height.length -1; i >= 0; i--) {
+            maxRight = Math.max(maxRight, height[i]);
+            maxRightHeight[i] = maxRight;
+        }
+        int trap = 0;
+        for(int i = 0; i < height.length; i++) {
+            int min = Math.min(maxLeftHeight[i], maxRightHeight[i]);
+            trap += min - height[i];
+        }
+
+        return trap;
     }
 }
